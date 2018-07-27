@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlogController {
+class BlogController {
 	private int idCounter;
-	private List<Topic> topics = new ArrayList<Topic>();
+	private List<Topic> topics = new ArrayList<>();
 
 	private static BlogController controller = new BlogController();
 
-	public static BlogController getInstance() {
+	public BlogController getInstance() {
 		return controller;
 	}
 
@@ -23,6 +23,6 @@ public class BlogController {
 	}
 
 	public List<Topic> getTopics() {
-		return new ArrayList<>(topics);
+		return topics;
 	}
 }

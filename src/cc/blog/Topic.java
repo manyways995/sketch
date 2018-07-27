@@ -1,12 +1,13 @@
 package cc.blog;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Topic {
 	private int id;
 	private String title;
 	private String content;
-	private LocalDateTime postDate;
+	private String postDate;
 
 	public String getContent() {
 		return content;
@@ -16,7 +17,7 @@ public class Topic {
 		return id;
 	}
 
-	public LocalDateTime getPostDate() {
+	public String getPostDate() {
 		return postDate;
 	}
 
@@ -32,12 +33,18 @@ public class Topic {
 		this.id = id;
 	}
 
-	public void setPostDate(LocalDateTime postDate) {
+	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String convertToDB() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String rightNow = LocalDateTime.now().format(dtf);
+		return rightNow;
 	}
 
 	@Override

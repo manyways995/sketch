@@ -20,7 +20,6 @@ public class PostServlet extends HttpServlet {
 	 */
 	public PostServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -29,7 +28,7 @@ public class PostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doProcess(request, response);
 	}
 
@@ -39,25 +38,22 @@ public class PostServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doProcess(request, response);
 	}
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
-		if (!"".equals(title) && !"".equals(content)) {
+		if(!title.isEmpty() && !content.isEmpty()) {
 			Topic topic = new Topic();
 			topic.setTitle(title);
 			topic.setContent(content);
-
-			BlogController cb = BlogController.getInstance();
+		
+			BlogController2DB cb = BlogController2DB.getInstance();
 			cb.postTopic(topic);
-		}
-
+		}		
 		request.getRequestDispatcher("/reads.do").forward(request, response);
 	}
 
