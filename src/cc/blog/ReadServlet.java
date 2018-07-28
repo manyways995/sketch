@@ -21,7 +21,6 @@ public class ReadServlet extends HttpServlet {
 	 */
 	public ReadServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -30,7 +29,6 @@ public class ReadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doProcess(request, response);
 	}
 
@@ -40,17 +38,15 @@ public class ReadServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doProcess(request, response);
 	}
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		BlogController cb = BlogController.getInstance();
+		BlogController2DB cb = BlogController2DB.getInstance();	
 		List<Topic> topics = cb.getTopics();
-		request.setAttribute("topics", topics);
 
+		request.setAttribute("topics", topics);
 		request.getRequestDispatcher("/mainview.jsp").forward(request, response);
 	}
 
